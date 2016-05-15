@@ -7,6 +7,20 @@
     </head>
     <body>
         <h1>tweedDash</h1>
+        <ul id="list">
+        </ul>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+        <script src="moment.js"></script>
+        <script>
+            $.getJSON('http://' + window.location.hostname + ':7890/1.1/statuses/user_timeline.json?count=30&screen_name=appdirect', function(data){
+                // console.log(data);
+                for (var i = 0; i < data.length; i++) {
+                    console.log(moment(data[i].created_at, 'dd MMM DD HH:mm:ss ZZ YYYY', 'en'));
+                    $('#list').append('<li><h2>' + data[i].text + '</h2>' + moment(data[i].created_at, 'dd MMM DD HH:mm:ss ZZ YYYY', 'en').fromNow() + '<a href="http://twitter.com/statuses/'+ data[i].id_str + '">Link</a>' +'</li>');
+                }
+                
+            });
+        </script>
     </body>
 </html>
 
