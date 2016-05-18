@@ -1,7 +1,6 @@
 #tweetDash
 
-
-json response body:
+##json response body:
 
 - array of 30 TWEET objects
 	- `created_at` string: UTC time of tweet creation. "dd MMM DD HH:mm:ss ZZ YYYY" format. this string is passed to Moment.JS for parsing into a useful date output (properly rendered timestamp and elapsed time)
@@ -40,3 +39,7 @@ json response body:
 		- `profile_image_url` string: link to user's 48px x 48px png icon 
 	- `retweeted_status` object exists if tweet is a retweet
 		- similar data to a normal tweet object
+
+
+##API call is taking 1500 ms to 8000 ms to return. very noticable lag.
+

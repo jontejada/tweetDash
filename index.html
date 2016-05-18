@@ -1,26 +1,31 @@
 <!doctype html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>tweetDash</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
-    <body>
-        <h1>tweedDash</h1>
-        <ul id="list">
-        </ul>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-        <script src="moment.js"></script>
-        <script>
-            $.getJSON('http://' + window.location.hostname + ':7890/1.1/statuses/user_timeline.json?count=30&screen_name=appdirect', function(data){
-                // console.log(data);
-                for (var i = 0; i < data.length; i++) {
-                    console.log(moment(data[i].created_at, 'dd MMM DD HH:mm:ss ZZ YYYY', 'en'));
-                    $('#list').append('<li><h2>' + data[i].text + '</h2>' + moment(data[i].created_at, 'dd MMM DD HH:mm:ss ZZ YYYY', 'en').fromNow() + '<a href="http://twitter.com/statuses/'+ data[i].id_str + '">Link</a>' +'</li>');
-                }
-                
-            });
-        </script>
-    </body>
-</html>
 
+<head>
+    <meta charset="utf-8">
+    <title>tweetDash</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.0.26/css/bulma.css">
+</head>
+
+<body>
+    <h1>tweetDash</h1>
+    <div class="columns">
+        <div class="column">
+            <ul id="list">
+            </ul>
+        </div>
+        <div class="column">
+            Second column
+        </div>
+        <div class="column">
+            Third column
+        </div>
+    </div>
+    <script src="https://use.fontawesome.com/b2f58b6a0f.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="moment.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
