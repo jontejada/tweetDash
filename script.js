@@ -1,18 +1,17 @@
-var x = new Date();
-console.log('script start');
-$.getJSON('http://' + window.location.hostname + ':7890/1.1/statuses/user_timeline.json?count=30&screen_name=appdirect', function(data) {
-	console.log(new Date() - x);
+var screenName = 'techcrunch';
+$.getJSON('http://' + window.location.hostname + ':7890/1.1/statuses/user_timeline.json?count=30&screen_name=' + screenName, function(data) {
 	var spanStart;
 	var spanEnd;
 	var photoStart;
 	var photoEnd;
 	for (var i = 0; i < data.length; i++) {
+		var retweet = '';
 		if (data[i].retweeted_status) {
 			data[i] = data[i].retweeted_status;
+			retweet = ' retweeted <a class="button is-success" href="https://twitter.com/' + data[i].user.screen_name + '">@' + data[i].user.screen_name + '</a>';
 		}
 		var rawTextArr = data[i].text.split('');
 		var hashtags = data[i].entities.hashtags;
-
 		for (var j = 0; j < hashtags.length; j++) {
 			spanStart = '<a href="https://twitter.com/hashtag/' + hashtags[j].text + '"><span class="tag is-info">';
 			spanEnd = '</span></a>';
@@ -28,7 +27,6 @@ $.getJSON('http://' + window.location.hostname + ':7890/1.1/statuses/user_timeli
 		}
 		var urls = data[i].entities.urls;
 		for (var l = 0; l < urls.length; l++) {
-			console.log(urls[l].url);
 			linkStart = '<a href="'+ urls[l].url +'">';
 			linkEnd = '</a>';
 			rawTextArr[urls[l].indices[0]] = linkStart + rawTextArr[urls[l].indices[0]];
@@ -42,8 +40,9 @@ $.getJSON('http://' + window.location.hostname + ':7890/1.1/statuses/user_timeli
 			rawTextArr.push(img);
 		}
 		if (rawTextArr[0] === '.') rawTextArr.shift();
-		$('#list').append('<li class="box">' + rawTextArr.join('') + '<br>' + moment(data[i].created_at, 'dd MMM DD HH:mm:ss ZZ YYYY', 'en').fromNow() + '<a href="http://twitter.com/statuses/' + data[i].id_str + '"><i class="fa fa-twitter fa-lg"></i></a>' + '</li>');
-		// $('#list').append('<li class="box">' + rawTextArr.join('') + '<br>' + moment(data[i].created_at, 'dd MMM DD HH:mm:ss ZZ YYYY', 'en').fromNow() + '<a href="http://twitter.com/statuses/' + data[i].id_str + '">Link</a>' + '</li>');
+		var timeStamp = moment(data[i].created_at, 'dd MMM DD HH:mm:ss ZZ YYYY', 'en');
+		var label = '<span class="tweetLabel"><a class="button is-success" href="https://twitter.com/' + screenName + '">@' + screenName + '</a>' + retweet + '</span>';
+		$('#list').append(label +'<li class="box">' + rawTextArr.join('') + '<br>' + '<span class="notes"><a href="http://twitter.com/statuses/' + data[i].id_str + '"><i class="fa fa-twitter fa-lg"></i></a>' + timeStamp.fromNow() + ' (' + timeStamp.format('M/D h:ma') + ')' +  '</span></li>');
 	}
 });
 
