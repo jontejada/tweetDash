@@ -1,0 +1,24 @@
+        li {
+            margin: auto 10px;
+        }
+        .tag {
+            height:18px;
+            vertical-align: middle;
+        }
+        img {
+            margin-top:10px;
+            border-radius: 5px;
+        }
+        i {
+            margin-right: 5px;
+        }
+        .button {
+            border-radius: 5px;
+            vertical-align: middle;
+        }
+        .tweetLabel {
+            margin-left: 10px;
+        }
+        .notes {
+            font-size: 90%;
+        }
