@@ -1,3 +1,22 @@
 <h1>tweets partial</h1>
-{{users}}
-{{usersTweets}}
+<!-- <input type="text" name="user1" ng-model="users[0]"> -->
+<!-- {{users}} -->
+<!-- {{usersTweets}} -->
+<div class="columns">
+    <div class="column" ng-repeat="user in users">
+        <div>
+        	<h1>@{{user}}</h1>
+        	<ul id="list">
+        		<!-- <div ng-repeat="tweet in usersTweets[$index]"> -->
+        		<div ng-repeat="tweet in tweetObj[user]">
+        			<span class="tweetLabel">
+        				<a class="button is-success" href="https://twitter.com/'{{user}}'">@{{user}}</a>{{}}
+        			</span>
+        			<li class="box">
+        				{{tweet.text}}
+        			</li>
+        		</div>
+        	</ul>
+        </div>
+    </div>
+</div>

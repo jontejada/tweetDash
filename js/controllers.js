@@ -8,4 +8,18 @@ angular.module('tweetDash.controllers',[]).controller('tweetsController', functi
 			$scope.usersTweets.push(Tweets.query({user: user}));
 		}
 	}
+	$scope.tweetObj = {};
+	angular.forEach($scope.usersTweets, function(userTweets) {
+		userTweets.$promise.then(function(tweetArr){
+				// console.log(tweetArr);
+				var userName = tweetArr[0].user.screen_name;
+				$scope.tweetObj[userName] = [];
+				for (var i = 0; i < tweetArr.length; i++) {
+					var tweet = {};
+					tweet.text = tweetArr[i].text;
+					$scope.tweetObj[userName].push(tweet);
+				}
+				console.log($scope.tweetObj);
+		});
+	});
 });
