@@ -1,4 +1,4 @@
-angular.module('tweetDash',['ui.router','ngResource', 'tweetDash.controllers','tweetDash.services']);
+angular.module('tweetDash',['ui.router', 'ngSanitize', 'ngResource', 'tweetDash.controllers','tweetDash.services']);
 angular.module('tweetDash').config(function($stateProvider, $httpProvider) {
 	$stateProvider.state('tweets', {
 		url: '/tweets',

@@ -1,24 +1,43 @@
-        li {
-            margin: auto 10px;
-        }
-        .tag {
-            height:18px;
-            vertical-align: middle;
-        }
-        img {
-            margin-top:10px;
-            border-radius: 5px;
-        }
-        i {
-            margin-right: 5px;
-        }
-        .button {
-            border-radius: 5px;
-            vertical-align: middle;
-        }
-        .tweetLabel {
-            margin-left: 10px;
-        }
-        .notes {
-            font-size: 90%;
-        }
+ul {
+    list-style-type: none;
+}
+li {
+    margin-top: 22px;
+}
+@media screen and (min-width: 770px) {
+    .column:first-of-type {
+        margin-left: 15px;
+    }
+    .column:last-of-type {
+        margin-right: 15px;
+    }
+}
+.tag {
+    height:20px;
+    vertical-align: middle;
+}
+img {
+    margin-top:10px;
+    border-radius: 5px;
+}
+i {
+    margin-right: 5px;
+}
+.button {
+    border-radius: 5px;
+    vertical-align: middle;
+}
+.tweetLabel {
+    margin-left: 2px;
+}
+.notes {
+    font-size: 90%;
+}
+.tweetInfo {
+    margin-top: 10px;
+}
+.box {
+    position: relative;
+    top:-3px;
+}
+

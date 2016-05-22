@@ -1,22 +1,31 @@
-<h1>tweets partial</h1>
+<!-- tweets partial -->
 <!-- <input type="text" name="user1" ng-model="users[0]"> -->
 <!-- {{users}} -->
 <!-- {{usersTweets}} -->
 <div class="columns">
     <div class="column" ng-repeat="user in users">
-        <div>
-        	<h1>@{{user}}</h1>
-        	<ul id="list">
-        		<!-- <div ng-repeat="tweet in usersTweets[$index]"> -->
-        		<div ng-repeat="tweet in tweetObj[user]">
-        			<span class="tweetLabel">
-        				<a class="button is-success" href="https://twitter.com/'{{user}}'">@{{user}}</a>{{}}
-        			</span>
-        			<li class="box">
-        				{{tweet.text}}
-        			</li>
-        		</div>
-        	</ul>
-        </div>
+    	<div class="content has-text-centered">
+    		<!-- <h1>@{{user}}</h1> -->
+    	</div>
+    	<ul id="list">
+    		<!-- <div ng-repeat="tweet in usersTweets[$index]"> -->
+    		<li ng-repeat="tweet in tweetObj[user]">
+    			<span class="tweetLabel">
+    				<a class="button is-success" href="https://twitter.com/{{user}}">@{{user}}</a>
+    				<span ng-if="tweet.rt"> retweeted <a class="button is-success" href="https://twitter.com/{{tweet.rt}}">@{{tweet.rt}}</a></span>
+    			</span>
+    			<div class="box">
+    				<!-- {{tweet.text}} -->
+    				<span ng-bind-html="tweet.text"></span>
+    				<br>
+					<div class="tweetInfo">
+						<a href="http://twitter.com/statuses/{{tweet.id}}">
+							<i class="fa fa-twitter fa-lg"></i>
+						</a>
+						{{tweet.time.fromNow()}} ({{tweet.time.format('M/D h:mm a')}})
+					</div>
+    			</div>
+    		</li>
+    	</ul>
     </div>
 </div>
