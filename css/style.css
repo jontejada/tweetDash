@@ -4,7 +4,7 @@ ul {
 li {
     margin-top: 22px;
 }
-@media screen and (min-width: 770px) {
+@media screen and (min-width: 980px) {
     .column:first-of-type {
         margin-left: 15px;
     }
