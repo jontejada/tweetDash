@@ -7,7 +7,7 @@ angular.module('tweetDash').config(function($stateProvider, $httpProvider) {
 	}).state('users', {
 		url: '/users',
 		templateUrl: 'partials/users.html', 
-		controller: 'tweetsController'
+		controller: 'usersController'
 	});
 }).run(function($state){
 	$state.go('tweets');

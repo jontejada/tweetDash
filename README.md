@@ -40,6 +40,3 @@
 	- `retweeted_status` object exists if tweet is a retweet
 		- similar data to a normal tweet object
 
-
-##API call is taking 1500 ms to 8000 ms to return. very noticable lag.
-

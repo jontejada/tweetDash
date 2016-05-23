@@ -1,5 +1,4 @@
 <!-- tweets partial -->
-
 <section class="hero is-primary">
   <div class="hero-body">
     <div class="container level">
@@ -12,8 +11,9 @@
           </h2>
       </div>
       <div class="level-right">
-        <input class="level-item" placeholder="search tweets" type="text" name="search" ng-model="search">
-        <div class="level-item button is-warning" ng-click="toggleEdit()">edit users</div>
+        <input ng-show="!edit" class="level-item" placeholder="search tweets" type="text" name="search" ng-model="search">
+        <div ng-show="!edit" class="level-item button is-warning" ng-click="toggleEdit()">edit users</div>
+        <div ng-show="edit" class="level-item button is-warning" ng-click="toggleEdit()">back to dashboard</div>
       </div>
     </div>
   </div>
@@ -22,7 +22,7 @@
     <div class="column" ng-repeat="user in users">
     	<div class="content has-text-centered">
     		<a class="button is-large is-success is-outlined" href="https://twitter.com/{{user}}">@{{user}}</a>
-            <i ng-click="removeUser(user)" class="fa fa-times fa-lg"></i>
+        <!-- <i ng-click="removeUser(user)" class="fa fa-times fa-lg"></i> -->
     	</div>
     	<ul id="list">
     		<!-- <div ng-repeat="tweet in usersTweets[$index]"> -->
@@ -32,7 +32,6 @@
     				<span ng-if="tweet.rt"> retweeted <a class="button is-success" href="https://twitter.com/{{tweet.rt}}">@{{tweet.rt}}</a></span>
     			</span>
     			<div class="box">
-    				<!-- {{tweet.text}} -->
     				<span ng-bind-html="tweet.text"></span>
     				<br>
 					<div class="tweetInfo">
