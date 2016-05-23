@@ -40,4 +40,31 @@ i {
     position: relative;
     top:-3px;
 }
-
+.fa-times {
+    color:#ed6c63;
+    margin-left: 10px;
+}
+section {
+    margin-bottom: 20px;
+}
+.subtitle {
+    margin-left: 5px;
+}
+input {
+    border-radius: 4px;
+    border: none;
+    border-bottom: solid 2px white;
+    padding:7px;
+    text-align: center;
+}
+input:focus {
+    outline:none;
+}
+.fa-plus-circle {
+    color:#97cd76;
+    margin-left: 8px;
+}
+.editList {
+    margin-left: 45%;
+    margin-top: 5%;
+}

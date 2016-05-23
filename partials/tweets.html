@@ -1,15 +1,32 @@
 <!-- tweets partial -->
-<!-- <input type="text" name="user1" ng-model="users[0]"> -->
-<!-- {{users}} -->
-<!-- {{usersTweets}} -->
-<div class="columns">
+
+<section class="hero is-primary">
+  <div class="hero-body">
+    <div class="container level">
+      <div class="level-left">
+          <h1 class="title">
+            tweetDash
+          </h1>
+          <h2 class="subtitle">
+            by <a href="http://jontejada.com">jontejada.com</a>
+          </h2>
+      </div>
+      <div class="level-right">
+        <input class="level-item" placeholder="search tweets" type="text" name="search" ng-model="search">
+        <div class="level-item button is-warning" ng-click="toggleEdit()">edit users</div>
+      </div>
+    </div>
+  </div>
+</section>
+<div ng-show="!edit" class="columns">
     <div class="column" ng-repeat="user in users">
     	<div class="content has-text-centered">
-    		<!-- <h1>@{{user}}</h1> -->
+    		<a class="button is-large is-success is-outlined" href="https://twitter.com/{{user}}">@{{user}}</a>
+            <i ng-click="removeUser(user)" class="fa fa-times fa-lg"></i>
     	</div>
     	<ul id="list">
     		<!-- <div ng-repeat="tweet in usersTweets[$index]"> -->
-    		<li ng-repeat="tweet in tweetObj[user]">
+    		<li ng-repeat="tweet in tweetObj[user] | filter:search">
     			<span class="tweetLabel">
     				<a class="button is-success" href="https://twitter.com/{{user}}">@{{user}}</a>
     				<span ng-if="tweet.rt"> retweeted <a class="button is-success" href="https://twitter.com/{{tweet.rt}}">@{{tweet.rt}}</a></span>
@@ -29,3 +46,12 @@
     	</ul>
     </div>
 </div>
+<ul ng-show="edit" class="editList">
+    <li ng-repeat="user in users">
+        <i ng-click="removeUser(user)" class="fa fa-times fa-lg"></i>
+        {{user}}
+    </li>
+    <li>
+        <i ng-click="addUser(userInput)" class="fa fa-plus-circle fa-lg"></i><input placeholder="add user" ng-model="userInput">
+    </li>
+</ul>

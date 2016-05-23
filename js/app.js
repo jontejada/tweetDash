@@ -4,10 +4,10 @@ angular.module('tweetDash').config(function($stateProvider, $httpProvider) {
 		url: '/tweets',
 		templateUrl: 'partials/tweets.html', 
 		controller: 'tweetsController'
-	}).state('viewUser', {
-		url: '/users/:name',
-		templateUrl: 'partials/user.html', 
-		controller: 'userController'
+	}).state('users', {
+		url: '/users',
+		templateUrl: 'partials/users.html', 
+		controller: 'tweetsController'
 	});
 }).run(function($state){
 	$state.go('tweets');
